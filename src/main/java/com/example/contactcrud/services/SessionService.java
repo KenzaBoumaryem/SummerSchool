@@ -32,10 +32,8 @@ public class SessionService {
     }
 
     public Session findById(Integer id) {
-        System.out.println("2");
 
         Session session = sessionRepository.findById(id).orElseThrow(()->new RuntimeException("not found "));
-        System.out.println("3");
 
         return session;
     }

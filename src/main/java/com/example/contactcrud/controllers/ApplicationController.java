@@ -27,10 +27,12 @@ public class ApplicationController {
     }
 
     @PostMapping("/createApplication")
-    public Application createApplication(@ModelAttribute ApplicationDto applicationDto) throws IOException {
+    public String createApplication(@ModelAttribute ApplicationDto applicationDto) throws IOException {
 
             Application createdApplication = applicationService.saveApplication(applicationDto);
-            return createdApplication;
+            if (createdApplication == null)
+                return "The email provided is already used , and we only allow one application ." ;
+            return "OK";
 
     }
     @GetMapping("/download/{id}")

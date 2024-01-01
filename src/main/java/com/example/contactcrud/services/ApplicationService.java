@@ -29,6 +29,10 @@ public class ApplicationService {
     }
 
     public Application saveApplication(ApplicationDto applicationDto) throws IOException {
+        Optional<Application> existingApplication = applicationRepository.findByEmail(applicationDto.getEmail());
+        if (existingApplication.isPresent()) {
+            return  null;
+        }
         MultipartFile file = applicationDto.getFileData();
 
         byte[] fileData = file.getBytes();
