@@ -22,7 +22,7 @@ public class Organizer {
     private String lastName;
     private String institution;
     @Lob
-    @Column(name = "Picture", columnDefinition = "BLOB")
+    @Column(name = "Picture", columnDefinition = "LONGBLOB")
     private byte[] Picture;
 
     @OneToMany(mappedBy = "organizer",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
